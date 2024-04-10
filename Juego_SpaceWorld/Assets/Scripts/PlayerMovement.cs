@@ -43,5 +43,34 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         
+        inputHorizontal = Input.GetAxis("Horizontal");
+
+        if(Input.GetButtonDown("Jump") && sensor.isGrounded == true)
+        {   
+            
+            rBody.AddForce(new Vector2(0,1) * jumpForce, ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
+
+         }
+           if(inputHorizontal < 0)
+        {
+            render.flipX = true;
+            anim.SetBool("isRunning", true);
+        }
+        else if(inputHorizontal > 0)
+        {
+            render.flipX = false;
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        rBody.velocity = new Vector2(inputHorizontal * movementSpeed, rBody.velocity.y);
+    
     }
 }
