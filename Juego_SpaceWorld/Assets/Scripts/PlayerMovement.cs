@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer render;
 
     public Animator anim;
+
+    public AudioClip deathSound;
+
+    AudioSource source;
    
    
    void Awake()
@@ -28,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     rBody = GetComponent<Rigidbody2D>();    
     render = GetComponent<SpriteRenderer>();
     anim = GetComponent<Animator>();  
+    source = GetComponent<AudioSource>();
 
    }
 
@@ -73,4 +81,23 @@ public class PlayerMovement : MonoBehaviour
         rBody.velocity = new Vector2(inputHorizontal * movementSpeed, rBody.velocity.y);
     
     }
+
+
+
+   void OnCollisionEnter2D(Collision2D collision)
+   {
+    if(collision.gameObject.tag=="Void")
+    {
+        TravisDeath();
+    }
+   
+   }
+   
+    public void TravisDeath()
+    {
+        source.PlayOneShot (deathSound);
+        Destroy(gameObject);
+    }
+    
+
 }
