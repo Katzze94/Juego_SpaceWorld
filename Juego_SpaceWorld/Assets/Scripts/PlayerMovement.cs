@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletPrefab;
 
     public float rateOfFire = 1;
+
+    public float timer;
    
    
    void Awake()
@@ -58,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Shoot();
+        inputHorizontal = Input.GetAxis("Horizontal");
         
         inputHorizontal = Input.GetAxis("Horizontal");
 
@@ -122,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.F) && canShoot)
         {
+           anim.SetBool("isAttacking", true);
             Instantiate(bulletPrefab, bulletSpawn.position,bulletSpawn.rotation);
 
             canShoot = false;

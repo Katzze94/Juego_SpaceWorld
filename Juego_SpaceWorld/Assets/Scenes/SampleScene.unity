@@ -5845,6 +5845,10 @@ MonoBehaviour:
   render: {fileID: 0}
   anim: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f6487bafcbb5de747bd97661e14dbd62, type: 3}
+  bulletSpawn: {fileID: 1614320052}
+  bulletPrefab: {fileID: 1988005150196047366, guid: 50c9af6dbbbe5a24c8de815ba5eebfef, type: 3}
+  rateOfFire: 1
+  timer: 0
 --- !u!1 &655318455
 GameObject:
   m_ObjectHideFlags: 0
@@ -7951,7 +7955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
-  diskSound: {fileID: 0}
+  diskSound: {fileID: 8300000, guid: a7c29afa234017d46abd050e4d68d549, type: 3}
   sprite: {fileID: 0}
 --- !u!61 &916853669
 BoxCollider2D:
@@ -12786,6 +12790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554464542}
   - component: {fileID: 1554464543}
+  - component: {fileID: 1554464544}
   m_Layer: 0
   m_Name: fondo 2
   m_TagString: Untagged
@@ -12860,6 +12865,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1554464544
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554464541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a64c8cfbc6914c24d9888db89ec46980, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1556591776
 GameObject:
   m_ObjectHideFlags: 0
