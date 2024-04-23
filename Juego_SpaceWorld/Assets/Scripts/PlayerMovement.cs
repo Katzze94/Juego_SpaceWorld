@@ -27,6 +27,14 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip deathSound;
 
     AudioSource source;
+
+    private bool canShoot = true;
+
+    public Transform bulletSpawn;
+
+    public GameObject bulletPrefab;
+
+    public float rateOfFire = 1;
    
    
    void Awake()
@@ -97,6 +105,27 @@ public class PlayerMovement : MonoBehaviour
     {
         source.PlayOneShot (deathSound);
         Destroy(gameObject);
+    }
+
+
+    void Shoot()
+    {
+        if(!canShoot)
+        {
+            timer += Time.deltaTime;
+            if(timer>= rateOfFire)
+            {
+                canShoot = true;
+                timer = 0;
+            }
+
+        }
+        if(Input.GetKeyDown(KeyCode.F) && canShoot)
+        {
+            Instantiate(bulletPrefab, bulletSpawn.position,bulletSpawn.rotation);
+
+            canShoot = false;
+        }
     }
     
 
