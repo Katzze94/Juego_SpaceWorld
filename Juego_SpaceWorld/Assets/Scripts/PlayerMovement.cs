@@ -102,13 +102,14 @@ public class PlayerMovement : MonoBehaviour
     if(collision.gameObject.tag=="Void")
     {
         TravisDeath();
+        
     }
    
    }
    
     public void TravisDeath()
     {
-        source.PlayOneShot (deathSound);
+        source.PlayOneShot(deathSound);
         Destroy(gameObject);
     }
 
