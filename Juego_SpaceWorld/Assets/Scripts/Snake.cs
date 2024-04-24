@@ -17,6 +17,8 @@ public class Snake : MonoBehaviour
     public float enemySpeed = 5;
 
     public float enemyDirection = 1;
+
+    public SpriteRenderer render;
    
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +26,7 @@ public class Snake : MonoBehaviour
         rBody = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider2D>();
+        render = GetComponent<SpriteRenderer>();
     }
     
     void FixedUpdate()
@@ -49,11 +52,13 @@ public class Snake : MonoBehaviour
             if(enemyDirection == 1)
         {
             enemyDirection = -1;
+            render.flipX = true;
 
         }
         else if(enemyDirection == -1)
         {
             enemyDirection = 1;
+            render.flipX = false;
             
         }
 
@@ -67,7 +72,7 @@ public class Snake : MonoBehaviour
         }
     }
 
-    public void GoombaDeath()
+    public void SnakeDeath()
     {
         
         source.PlayOneShot(deathSound);

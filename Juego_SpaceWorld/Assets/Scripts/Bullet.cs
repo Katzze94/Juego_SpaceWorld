@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnTriggerEnter2d(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.tag == "Player)")
         {
@@ -24,7 +24,8 @@ public class Bullet : MonoBehaviour
         }
         if(collider.gameObject.tag == "Snake")
         {
-            Destroy(collider.gameObject);
+           //Destroy(collider.gameObject);
+          
         }
         Destroy(gameObject);
     }
