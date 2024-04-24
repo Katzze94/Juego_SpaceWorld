@@ -10,6 +10,14 @@ public class BGMManager : MonoBehaviour
     public AudioClip lvl1Music;
 
     // Start is called before the first frame update
+   
+     
+    void Awake()
+
+    {
+        source=GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         source.clip = lvl1Music;

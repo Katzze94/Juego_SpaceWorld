@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     public float rateOfFire = 1;
 
     public float timer;
+
+    public bool canMove = true;
    
    
    void Awake()
@@ -62,11 +64,20 @@ public class PlayerMovement : MonoBehaviour
     {
 
         Shoot();
-        inputHorizontal = Input.GetAxis("Horizontal");
-        
-        inputHorizontal = Input.GetAxis("Horizontal");
+        if(canMove == true)
+        {
+            inputHorizontal = Input.GetAxis("Horizontal");
 
-        if(Input.GetButtonDown("Jump") && sensor.isGrounded == true)
+        }
+        else
+        {
+            inputHorizontal = 0;
+        }
+        
+        
+        
+
+        if(Input.GetButtonDown("Jump") && sensor.isGrounded == true && canMove == true)
         {   
             
             rBody.AddForce(new Vector2(0,1) * jumpForce, ForceMode2D.Impulse);
@@ -75,12 +86,14 @@ public class PlayerMovement : MonoBehaviour
          }
            if(inputHorizontal < 0)
         {
-            render.flipX = true;
+            //render.flipX = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             anim.SetBool("isRunning", true);
         }
         else if(inputHorizontal > 0)
         {
-            render.flipX = false;
+            //render.flipX = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             anim.SetBool("isRunning", true);
         }
         else
@@ -88,6 +101,18 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
     }
+
+    void CanMove()
+    {
+        canMove = true;
+    }
+
+    void CantMove()
+    {
+        canMove = false;
+    }
+
+
 
     void FixedUpdate()
     {
@@ -122,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
             if(timer>= rateOfFire)
             {
                 canShoot = true;
+                canMove = true;
                 timer = 0;
             }
 
@@ -132,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(bulletPrefab, bulletSpawn.position,bulletSpawn.rotation);
 
             canShoot = false;
+            canMove = false;
         }
     }
     
