@@ -39,6 +39,12 @@ public class PlayerMovement : MonoBehaviour
     public float timer;
 
     public bool canMove = true;
+
+    public bool isDeath = false;
+
+    public Renderer sprite;
+
+   
    
    
    void Awake()
@@ -48,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     render = GetComponent<SpriteRenderer>();
     anim = GetComponent<Animator>();  
     source = GetComponent<AudioSource>();
+    sprite = GetComponent<Renderer>();
+
+    
 
    }
 
@@ -126,15 +135,26 @@ public class PlayerMovement : MonoBehaviour
    {
     if(collision.gameObject.tag=="Void")
     {
-        TravisDeath();
+        //TravisDeath();
+
+        StartCoroutine("Die");
         
     }
+    }
    
-   }
-   
+   public IEnumerator Die()
+     {
+        isDeath = true;
+        sprite.enabled = false;
+        yield return new WaitForSeconds(1);
+        source.PlayOneShot(deathSound);
+    }
+
+
     public void TravisDeath()
     {
         source.PlayOneShot(deathSound);
+       
         Destroy(gameObject);
     }
 

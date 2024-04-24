@@ -69,8 +69,11 @@ public class Snake : MonoBehaviour
             
           PlayerMovement player=GameObject.FindObjectOfType<PlayerMovement>();
           player.TravisDeath();
+          
         }
     }
+
+    
 
     public void SnakeDeath()
     {
