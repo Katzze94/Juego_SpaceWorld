@@ -24,9 +24,10 @@ public class Bullet : MonoBehaviour
         }
         if(collider.gameObject.tag == "Snake")
         {
-           //Destroy(collider.gameObject);
+            Snake enemy = GameObject.FindObjectOfType<Snake>();
+            enemy.SnakeDeath();
           
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

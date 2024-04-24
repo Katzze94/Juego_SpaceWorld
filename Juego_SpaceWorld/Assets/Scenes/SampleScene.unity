@@ -5904,7 +5904,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f6487bafcbb5de747bd97661e14dbd62, type: 3}
   bulletSpawn: {fileID: 1614320052}
-  bulletPrefab: {fileID: 1988005150196047366, guid: 50c9af6dbbbe5a24c8de815ba5eebfef, type: 3}
+  bulletPrefab: {fileID: 5831644470675557543, guid: e9b474baa92134a499c835992a622ab8, type: 3}
   rateOfFire: 1
   timer: 0
   canMove: 1
