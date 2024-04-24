@@ -19,6 +19,10 @@ public class Snake : MonoBehaviour
     public float enemyDirection = 1;
 
     public SpriteRenderer render;
+
+    
+
+    
    
     // Start is called before the first frame update
     void Awake()
@@ -70,9 +74,11 @@ public class Snake : MonoBehaviour
           PlayerMovement player=GameObject.FindObjectOfType<PlayerMovement>();
           player.TravisDeath();
           
+          
         }
     }
 
+    
     
 
     public void SnakeDeath()

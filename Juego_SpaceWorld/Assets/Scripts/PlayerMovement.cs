@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Renderer sprite;
 
+    public AudioClip travisDamage;
+
    
    
    
@@ -140,22 +142,40 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine("Die");
         
     }
+    if(collision.gameObject.tag=="Snake")
+    {
+        //TravisDeath();
+
+        sprite.enabled = false;
+        source.PlayOneShot(travisDamage);
+        
+        
+        
+        
     }
-   
+    if(collision.gameObject.tag=="Trap")
+    {
+        sprite.enabled = false;
+        source.PlayOneShot(travisDamage);
+    }
+    }
+
+  
    public IEnumerator Die()
      {
         isDeath = true;
         sprite.enabled = false;
-        yield return new WaitForSeconds(1);
         source.PlayOneShot(deathSound);
+        yield return new WaitForSeconds(1);
+        
     }
 
 
     public void TravisDeath()
     {
-        source.PlayOneShot(deathSound);
+        source.PlayOneShot(travisDamage);
        
-        Destroy(gameObject);
+        sprite.enabled = false;
     }
 
 
@@ -183,4 +203,5 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
+   
 }
