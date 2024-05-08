@@ -7,6 +7,7 @@ TagManager:
   - Void
   - Disk
   - Snake
+  - Trap
   layers:
   - Default
   - TransparentFX

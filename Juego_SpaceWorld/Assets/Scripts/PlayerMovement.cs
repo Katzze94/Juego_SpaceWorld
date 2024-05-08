@@ -146,17 +146,20 @@ public class PlayerMovement : MonoBehaviour
     {
         //TravisDeath();
 
-        sprite.enabled = false;
-        source.PlayOneShot(travisDamage);
+        /*sprite.enabled = false;
+        source.PlayOneShot(travisDamage);*/
         
+        StartCoroutine("DieTrapEnemy");
         
         
         
     }
     if(collision.gameObject.tag=="Trap")
     {
-        sprite.enabled = false;
-        source.PlayOneShot(travisDamage);
+       /*sprite.enabled = false;
+        source.PlayOneShot(travisDamage);*/
+        StartCoroutine("DieTrapEnemy");
+        
     }
     }
 
@@ -167,7 +170,19 @@ public class PlayerMovement : MonoBehaviour
         sprite.enabled = false;
         source.PlayOneShot(deathSound);
         yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("GameOver");
         
+    }
+
+    public IEnumerator DieTrapEnemy()
+    {
+        isDeath = true;
+        sprite.enabled = false;
+        source.PlayOneShot(travisDamage);
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("GameOver");
     }
 
 
